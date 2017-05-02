@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -106,6 +107,8 @@ public class Q2 extends Fragment{
                 Log.v("ppking" , " findout2");
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
+            }else{
+                Toast.makeText(getContext(),"答案似乎是錯的",Toast.LENGTH_SHORT).show();
             }
         }
     }

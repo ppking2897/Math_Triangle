@@ -1,5 +1,7 @@
 package com.example.biancaen.math_triangle;
 
+import android.util.Log;
+
 class DegRadCount {
     private float b_Point_Start_X;
     private float b_Point_Start_Y;
@@ -46,6 +48,8 @@ class DegRadCount {
                 double a , double b , double c , double angleDeg_ab , double angleDeg_ac , double angleDeg_bc){
 
         //各個EditText get出來轉成字串，再去判斷是否為空格，若不是再轉成double
+
+        Log.v("ppking" ,"ppking");
 
         this.angleDeg_ab = angleDeg_ab;
         this.angleDeg_ac = angleDeg_ac;

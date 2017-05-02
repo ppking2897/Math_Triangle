@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 
@@ -76,11 +78,9 @@ public class Q1 extends Fragment {
                 Log.v("ppking" , " findout !!");
                 mainActivity.passAns1ToMain(answer);
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.mainPager , q2);
-//                fragmentTransaction.commit();
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
+            }else{
+                Toast.makeText(getContext(),"答案似乎是錯的",Toast.LENGTH_SHORT).show();
             }
         }
     }

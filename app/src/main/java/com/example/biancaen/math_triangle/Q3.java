@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Q3 extends Fragment {
     private MainActivity mainActivity;
-    private String angleSin;
-    private String angleSin2;
+    private String angleSin = "";
+    private String angleSin2 = "";
     String lastAns;
     String lastAns1;
     @Nullable
@@ -96,8 +97,18 @@ public class Q3 extends Fragment {
             Button button = (Button)v;
             if (button.getText().toString().contains(lastAns)){
                 Log.v("ppking" , " findout3");
+                mainActivity.passAns3ToMain0(lastAns);
+
+                mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
+                mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else if (button.getText().toString().contains(lastAns1)){
                 Log.v("ppking" , " findout3");
+                mainActivity.passAns3ToMain0(lastAns1);
+
+                mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
+                mainActivity.mainPager.getAdapter().notifyDataSetChanged();
+            }else {
+                Toast.makeText(getContext(),"答案似乎是錯的",Toast.LENGTH_SHORT).show();
             }
         }
     }

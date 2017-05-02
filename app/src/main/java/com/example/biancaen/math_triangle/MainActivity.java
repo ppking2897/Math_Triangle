@@ -14,10 +14,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     MyViewPager mainPager;
     private ArrayList<Fragment> views = new ArrayList<>();
-    private InitialData initialData;
     private ArrayList<Double> lines = new ArrayList<>();
     private ArrayList<ArrayList<Double>> angles = new ArrayList<>();
-    private ArrayList arrayList ;
     private double angleAB;
     private double angleAC;
     private double angleBC;
@@ -30,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     private String ans1;
     private float ans2;
+    private String ans3;
     private float denominator;
 
     DegRadCount degRadCount;
     Draw draw;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,53 +41,24 @@ public class MainActivity extends AppCompatActivity {
         mainPager = (MyViewPager) findViewById(R.id.mainPager);
         mainPager.setCurrentItem(0);
 
-        initialData = new InitialData();
+        InitialData initialData = new InitialData();
         initialData.setAngles(angles);
         initialData.setLines(lines);
+        Q1 q1 = new Q1();
+        Q2 q2 = new Q2();
+        Q3 q3 = new Q3();
+        Q4 q4 = new Q4();
+        views.add(q1);
+        views.add(q2);
+        views.add(q3);
+        views.add(q4);
+        mainPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
         initialPager();
     }
 
     public void initialPager() {
 
-        Q1 q1 = new Q1();
-        Q2 q2 = new Q2();
-        Q3 q3 = new Q3();
-        views.add(q1);
-        views.add(q2);
-        views.add(q3);
-        mainPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-
-            private int position;
-            @Override
-            public Fragment getItem(int position) {
-                Log.v("ppking" , "position : " + position);
-                this.position = position;
-                return views.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return views.size();
-            }
-
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                return super.instantiateItem(container, position);
-            }
-
-            @Override
-            public int getItemPosition(Object object) {
-                if (position == 2){
-                    //setTag setTitle
-                    return POSITION_NONE;
-                }
-
-                return super.getItemPosition(object);
-            }
-        });
-
-
-        arrayList = angles.get((int)(Math.random()*6));
+        ArrayList arrayList = angles.get((int) (Math.random() * 6));
 
         angleAB =(Double) arrayList.get(0);
         angleAC =(Double) arrayList.get(1);
@@ -103,12 +72,18 @@ public class MainActivity extends AppCompatActivity {
         randomB = (int)(Math.random()*10);
 
     }
+
+    @Override
+    public void finish() {
+        degRadCount = null;
+
+        super.finish();
+    }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        draw = (Draw)findViewById(R.id.drawView);
-        degRadCount = new DegRadCount(this, 400, draw.getWidth(), draw.getHeight(), lineA, lineB, lineC, angleAB, angleAC, angleBC);
-        draw.setLine(lines.get(randomA) , lines.get(randomB) , 1);
+        drawData();
     }
 
     public double lineA_ANS(){
@@ -128,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         this.ans2 = ans2;
         this.denominator = denominator;
     }
+    public void passAns3ToMain0(String ans3){
+        this.ans3 = ans3;
+    }
     public String passAnsToQ2(){
         return ans1;
     }
@@ -137,5 +115,49 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(denominator);
         return arrayList;
     }
+    public String passAnsToQ40(){
+        return ans3;
+    }
 
+    public void drawData(){
+        draw = (Draw)findViewById(R.id.drawView);
+        degRadCount = new DegRadCount(this, 400, draw.getWidth(), draw.getHeight(), lineA, lineB, lineC, angleAB, angleAC, angleBC);
+        draw.setLine(lines.get(randomA) , lines.get(randomB) , 1);
+    }
+
+    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+        private int position;
+
+        MyFragmentPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Log.v("ppking" , "position : " + position);
+            this.position = position;
+            return views.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return views.size();
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            return super.instantiateItem(container, position);
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            if (position == 2){
+                //setTag setTitle
+                return POSITION_NONE;
+            }else if (position == 3){
+                return POSITION_NONE;
+            }
+            return super.getItemPosition(object);
+        }
+    }
 }
