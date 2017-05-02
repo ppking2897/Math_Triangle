@@ -137,22 +137,13 @@ public class Draw extends View {
 
         rectF.set(b_Point_Start_X-(100) , b_Point_Start_Y -(100) , b_Point_Start_X+(100) ,b_Point_Start_Y+(100));
         canvas.drawArc(rectF , 0 , -(float)angleDeg_ab  ,false ,paintText);
-
-        //rectF.set(a_Point_End_X-(b_TextCenterX/4) , a_Point_End_Y-(b_TextCenterX/4) , a_Point_End_X+(b_TextCenterX/4) ,a_Point_End_Y+(b_TextCenterX/4));
-        //canvas.drawArc(rectF , 180 - ((float)angleDeg_ac + (float)angleDeg_ab) , (float)angleDeg_ac ,false ,paintText);
-
-        //rectF.set(b_Point_End_X-(b_TextCenterX/4) , b_Point_End_Y-(b_TextCenterX/4) , b_Point_End_X+(b_TextCenterX/4) ,b_Point_End_Y+(b_TextCenterX/4));
-        //canvas.drawArc(rectF , 180 , (float)angleDeg_bc , false , paintText );
-
+        
         //邊長 角度 字體顯示
         canvas.drawText((int)b + "公分", b_TextCenterX, b_TextCenterY, paint);
         canvas.drawText((int)a + "公分", a_TextCenterX, a_TextCenterY, paint);
-        //canvas.drawText(c + "公分", c_TextCenterX, c_TextCenterY, paint);
-        canvas.drawText("邊長C", c_TextCenterX, c_TextCenterY, paint);
-        //canvas.drawText("Q : 請問邊長C為多少?" , (getWidth()/2)-(textSize*5), a_Point_End_Y-50 , paint );
 
+        canvas.drawText("邊長C", c_TextCenterX, c_TextCenterY, paint);
         canvas.drawText((int)angleDeg_ab + "度", b_Point_Start_X - 3*textSize/2 , b_Point_Start_Y + 3*textSize/2 , paint);
-        //canvas.drawText(angleDeg_ac + "度", a_Point_End_X - textSize , a_Point_End_Y - textSize/2 , paint);
-        //canvas.drawText(angleDeg_bc + "度", b_Point_End_X - 3*textSize/2 , b_Point_End_Y + + 3*textSize/2 , paint);
+
     }
 }

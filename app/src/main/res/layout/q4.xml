@@ -22,6 +22,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+            <Button
+                android:id="@+id/a_Q4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:gravity="center"
+                />
+            <Button
+                android:id="@+id/b_Q4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:gravity="center"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
