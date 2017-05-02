@@ -19,13 +19,8 @@ public class Q4 extends Fragment {
         TextView textView =(TextView)view.findViewById(R.id.q4TextView);
         mainActivity = (MainActivity)getActivity();
 
-        textView.setText("恭喜!!正確答案為:" + "\n" + mainActivity.passAnsToQ40() + "\n" + "請問是否還要再來一題?");
+        textView.setText("恭喜!!正確答案為:" + "\n" + mainActivity.passAnsToQ40() + "\n");
 
-        Button buttonA = (Button)view.findViewById(R.id.a_Q4);
-
-        buttonA.setText("是");
-
-        buttonA.setOnClickListener(new MyClickListener());
 
         return view;
     }
@@ -36,11 +31,11 @@ public class Q4 extends Fragment {
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().equals("是")) {
-                Log.v("ppking", "是");
-
-                mainActivity.onWindowFocusChanged(true);
-                mainActivity.drawData();
                 mainActivity.mainPager.setCurrentItem(0);
+                mainActivity.mainPager.getAdapter().notifyDataSetChanged();
+                mainActivity.initialPager();
+                mainActivity.drawData();
+
             }
         }
     }

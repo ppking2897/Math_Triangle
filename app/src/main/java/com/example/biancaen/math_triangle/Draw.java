@@ -57,7 +57,6 @@ public class Draw extends View {
                              float bc_Point_Start_X , float bc_Point_Start_Y,
                              float bc_Point_End_X , float bc_Point_End_Y)
     {
-        Log.v("ppking" ,"b_Point_Start_X"+ b_Point_Start_X );
         this.b_Point_Start_X = b_Point_Start_X;
         this.b_Point_Start_Y = b_Point_Start_Y;
         this.b_Point_End_X = b_Point_End_X;

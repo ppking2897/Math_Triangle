@@ -19,7 +19,6 @@ public class Q2 extends Fragment{
     MainActivity mainActivity;
     String angleSin;
 
-    float i ;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,14 +41,7 @@ public class Q2 extends Fragment{
             angleSin = "√3/2";
         }
         float i = (lineA * lineB)/2;
-
-
         mainActivity.passAns2ToMain(i , 2);
-
-
-        Log.v("ppking" , "lineA : " + lineA);
-        Log.v("ppking" , "lineB : " + lineB);
-        Log.v("ppking" , "angleAB : " + angleAB);
 
         Button buttonA = (Button)view.findViewById(R.id.a_Q2);
         Button buttonB = (Button)view.findViewById(R.id.b_Q2);
@@ -64,13 +56,11 @@ public class Q2 extends Fragment{
             question.add( p + " * 1/2 ");
             question.add( p + " * √2/2 ");
             question.add( p + " * √3/2 ");
-            Log.v("ppking" , " 整數 !");
         }else {
             question.add( i + "");
             question.add( i + " * 1/2 ");
             question.add( i + " * √2/2 ");
             question.add( i + " * √3/2 ");
-            Log.v("ppking" , " 有小數點 !");
         }
 
 
@@ -104,7 +94,6 @@ public class Q2 extends Fragment{
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().toString().contains(angleSin)){
-                Log.v("ppking" , " findout2");
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else{

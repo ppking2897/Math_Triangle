@@ -28,7 +28,6 @@ public class Q1 extends Fragment {
         View view = inflater.inflate(R.layout.q1 , container, false);
 
         mainActivity = (MainActivity)getActivity();
-
         int lineA = (int)mainActivity.lineA_ANS();
         int lineB = (int)mainActivity.lineB_ANS();
         int angleAB =(int)mainActivity.angleAB_ANS();
@@ -75,7 +74,6 @@ public class Q1 extends Fragment {
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().toString().contains(answer)){
-                Log.v("ppking" , " findout !!");
                 mainActivity.passAns1ToMain(answer);
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();

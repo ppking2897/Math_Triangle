@@ -47,10 +47,7 @@ class DegRadCount {
     DegRadCount(MainActivity mainActivity , int proportion , float viewWidth , float viewHeight,
                 double a , double b , double c , double angleDeg_ab , double angleDeg_ac , double angleDeg_bc){
 
-        //各個EditText get出來轉成字串，再去判斷是否為空格，若不是再轉成double
-
         Log.v("ppking" ,"ppking");
-
         this.angleDeg_ab = angleDeg_ab;
         this.angleDeg_ac = angleDeg_ac;
         this.angleDeg_bc = angleDeg_bc;

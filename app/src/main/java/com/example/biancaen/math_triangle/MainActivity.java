@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private String ans3;
     private float denominator;
 
+    private float viewWidth;
+    private float viewHeight;
+
     DegRadCount degRadCount;
     Draw draw;
 
@@ -76,13 +79,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void finish() {
         degRadCount = null;
-
         super.finish();
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+        draw = (Draw)findViewById(R.id.drawView);
+        viewHeight = draw.getHeight();
+        viewWidth = draw.getWidth();
         drawData();
     }
 
@@ -120,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void drawData(){
-        draw = (Draw)findViewById(R.id.drawView);
-        degRadCount = new DegRadCount(this, 400, draw.getWidth(), draw.getHeight(), lineA, lineB, lineC, angleAB, angleAC, angleBC);
+        degRadCount = new DegRadCount(this, 400, viewWidth, viewHeight, lineA, lineB, lineC, angleAB, angleAC, angleBC);
         draw.setLine(lines.get(randomA) , lines.get(randomB) , 1);
     }
 

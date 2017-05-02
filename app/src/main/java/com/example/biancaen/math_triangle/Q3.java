@@ -96,13 +96,11 @@ public class Q3 extends Fragment {
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().toString().contains(lastAns)){
-                Log.v("ppking" , " findout3");
                 mainActivity.passAns3ToMain0(lastAns);
 
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else if (button.getText().toString().contains(lastAns1)){
-                Log.v("ppking" , " findout3");
                 mainActivity.passAns3ToMain0(lastAns1);
 
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
