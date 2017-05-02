@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.example.biancaen.math_triangle.Draw
+        android:id="@+id/drawViewFinal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000000"
+        />
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="10"
+        >
+
+        <TextView
+            android:id="@+id/finalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:text="邊長C : "
+            android:textSize="20sp"
+            android:gravity="right"
+            />
+        <TextView
+            android:id="@+id/finalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="444"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+</LinearLayout>

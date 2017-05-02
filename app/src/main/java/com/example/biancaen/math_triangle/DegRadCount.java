@@ -47,7 +47,6 @@ class DegRadCount {
     DegRadCount(MainActivity mainActivity , int proportion , float viewWidth , float viewHeight,
                 double a , double b , double c , double angleDeg_ab , double angleDeg_ac , double angleDeg_bc){
 
-        Log.v("ppking" ,"ppking");
         this.angleDeg_ab = angleDeg_ab;
         this.angleDeg_ac = angleDeg_ac;
         this.angleDeg_bc = angleDeg_bc;
@@ -65,6 +64,21 @@ class DegRadCount {
             big_c = c *proportion;
             initial(viewWidth , viewHeight , angleDeg_ab);
         }else if (angleDeg_ab == 150.0){
+            proportion = proportion - 50;
+            big_a = a *proportion;
+            big_b = b *proportion;
+            big_c = c *proportion;
+            initial(viewWidth , viewHeight , angleDeg_ab);
+        }
+        Log.v("ppking" , " a_Point_End_X : " + a_Point_End_X);
+        if (a_Point_End_X < 0){
+            proportion = proportion - 50;
+            big_a = a *proportion;
+            big_b = b *proportion;
+            big_c = c *proportion;
+            initial(viewWidth , viewHeight , angleDeg_ab);
+        }
+        if (a_Point_End_Y < 0){
             proportion = proportion - 50;
             big_a = a *proportion;
             big_b = b *proportion;
@@ -128,7 +142,7 @@ class DegRadCount {
 
         //解析度字體大小
         float textCount = 3;
-        textSize = 45;
+        textSize = 35;
         float textTotalSize = textCount * textSize;
 
         viewCenterWidth = viewWidth/2;

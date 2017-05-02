@@ -21,8 +21,8 @@ public class Q3 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.q3 , container , false);
-        TextView textView =(TextView)view.findViewById(R.id.q3TextView);
+        View view = inflater.inflate(R.layout.q2 , container , false);
+        TextView textView =(TextView)view.findViewById(R.id.q2TextView);
         mainActivity = (MainActivity)getActivity();
         float angleAB =(float) mainActivity.angleAB_ANS();
 
@@ -39,10 +39,10 @@ public class Q3 extends Fragment {
 
         ArrayList arrayList =mainActivity.passAnsToQ3();
 
-        Button buttonA = (Button)view.findViewById(R.id.a_Q3);
-        Button buttonB = (Button)view.findViewById(R.id.b_Q3);
-        Button buttonC = (Button)view.findViewById(R.id.c_Q3);
-        Button buttonD = (Button)view.findViewById(R.id.d_Q3);
+        Button buttonA = (Button)view.findViewById(R.id.a_Q2);
+        Button buttonB = (Button)view.findViewById(R.id.b_Q2);
+        Button buttonC = (Button)view.findViewById(R.id.c_Q2);
+        Button buttonD = (Button)view.findViewById(R.id.d_Q2);
 
         float a = (float)arrayList.get(0);
         float b = (float)arrayList.get(1);
@@ -97,10 +97,14 @@ public class Q3 extends Fragment {
             if (button.getText().toString().contains(lastAns)){
                 mainActivity.passAns3ToMain0(lastAns);
 
+                mainActivity.drawData();
+
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else if (button.getText().toString().contains(lastAns1)){
                 mainActivity.passAns3ToMain0(lastAns1);
+
+                mainActivity.drawData();
 
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();

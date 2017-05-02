@@ -3,11 +3,9 @@ package com.example.biancaen.math_triangle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 
@@ -22,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int randomA;
     private int randomB;
+    private int randomAngles;
     private double lineA;
     private double lineB;
     private double lineC;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainPager = (MyViewPager) findViewById(R.id.mainPager);
-        mainPager.setCurrentItem(0);
 
         InitialData initialData = new InitialData();
         initialData.setAngles(angles);
@@ -56,12 +54,17 @@ public class MainActivity extends AppCompatActivity {
         views.add(q3);
         views.add(q4);
         mainPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
+        mainPager.setCurrentItem(0);
         initialPager();
     }
 
     public void initialPager() {
 
-        ArrayList arrayList = angles.get((int) (Math.random() * 6));
+        randomA = (int)(Math.random()*10);
+        randomB = (int)(Math.random()*10);
+        randomAngles = ((int) (Math.random() * 6));
+
+        ArrayList arrayList = angles.get(randomAngles);
 
         angleAB =(Double) arrayList.get(0);
         angleAC =(Double) arrayList.get(1);
@@ -70,10 +73,6 @@ public class MainActivity extends AppCompatActivity {
         lineA = (Double) arrayList.get(3);
         lineB = (Double) arrayList.get(4);
         lineC = (Double) arrayList.get(5);
-
-        randomA = (int)(Math.random()*10);
-        randomB = (int)(Math.random()*10);
-
     }
 
     @Override
@@ -85,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+        Log.v("ppking" , "onWindowFocusChanged !!");
         draw = (Draw)findViewById(R.id.drawView);
         viewHeight = draw.getHeight();
         viewWidth = draw.getWidth();
@@ -120,12 +120,12 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(denominator);
         return arrayList;
     }
-    public String passAnsToQ40(){
+    public String passAnsToQ4(){
         return ans3;
     }
 
     public void drawData(){
-        degRadCount = new DegRadCount(this, 400, viewWidth, viewHeight, lineA, lineB, lineC, angleAB, angleAC, angleBC);
+        degRadCount = new DegRadCount(this, 300, viewWidth, viewHeight, lineA, lineB, lineC, angleAB, angleAC, angleBC);
         draw.setLine(lines.get(randomA) , lines.get(randomB) , 1);
     }
 
@@ -164,4 +164,5 @@ public class MainActivity extends AppCompatActivity {
             return super.getItemPosition(object);
         }
     }
+
 }

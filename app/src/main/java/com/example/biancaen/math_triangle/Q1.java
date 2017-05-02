@@ -25,9 +25,11 @@ public class Q1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        Log.v("ppking" , " Q1");
         View view = inflater.inflate(R.layout.q1 , container, false);
 
         mainActivity = (MainActivity)getActivity();
+
         int lineA = (int)mainActivity.lineA_ANS();
         int lineB = (int)mainActivity.lineB_ANS();
         int angleAB =(int)mainActivity.angleAB_ANS();
@@ -40,10 +42,10 @@ public class Q1 extends Fragment {
         question.add(lineA + " * " + lineB + " * Cos" + angleAB + String.valueOf(((char)176)));
         question.add(lineA + " * " + lineB + " * Sin" + angleAB + String.valueOf(((char)176)));
 
-        Button buttonA = (Button) view.findViewById(R.id.a);
-        Button buttonB = (Button) view.findViewById(R.id.b);
-        Button buttonC = (Button) view.findViewById(R.id.c);
-        Button buttonD = (Button) view.findViewById(R.id.d);
+        Button buttonA = (Button) view.findViewById(R.id.a_Q1);
+        Button buttonB = (Button) view.findViewById(R.id.b_Q1);
+        Button buttonC = (Button) view.findViewById(R.id.c_Q1);
+        Button buttonD = (Button) view.findViewById(R.id.d_Q1);
 
         int number = (int) (Math.random() * question.size());
         buttonA.setText("A. "+question.get(number));
@@ -75,7 +77,7 @@ public class Q1 extends Fragment {
             Button button = (Button)v;
             if (button.getText().toString().contains(answer)){
                 mainActivity.passAns1ToMain(answer);
-                mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
+                mainActivity.mainPager.setCurrentItem(1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else{
                 Toast.makeText(getContext(),"答案似乎是錯的",Toast.LENGTH_SHORT).show();

@@ -7,39 +7,49 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+
 public class Q4 extends Fragment {
-    private MainActivity mainActivity;
+    private String angleSin;
+    Draw draw;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.q4 , container , false);
-        TextView textView =(TextView)view.findViewById(R.id.q4TextView);
-        mainActivity = (MainActivity)getActivity();
+        Log.v("ppking" , " Q4");
+        View view = inflater.inflate(R.layout.finalpage , container , false);
+        MainActivity mainActivity = (MainActivity) getActivity();
+        TextView title = (TextView)view.findViewById(R.id.finalTitle);
+        TextView textView =(TextView) view.findViewById(R.id.finalText);
 
-        textView.setText("恭喜!!正確答案為:" + "\n" + mainActivity.passAnsToQ40() + "\n" + "請問是否還要再來一題?");
+        float angleAB =(float) mainActivity.angleAB_ANS();
 
-        Button buttonA = (Button)view.findViewById(R.id.a_Q4);
+        if (angleAB == 30 || angleAB == 150){
+            angleSin = "1/2";
+        }else if (angleAB == 45 || angleAB == 135){
+            angleSin = "√2/2";
+        }else if (angleAB == 60 || angleAB == 120){
+            angleSin = "√3/2";
+        }
 
-        buttonA.setText("是");
+        ArrayList arrayList = mainActivity.passAnsToQ3();
 
-        buttonA.setOnClickListener(new MyClickListener());
+        float a = (float)arrayList.get(0);
 
+        if (a%2==0 || a%2==1){
+            int p  =(int)a;
+            textView.setText(mainActivity.passAnsToQ2() + "\n" + p + "  *  " + angleSin + "\n" + mainActivity.passAnsToQ4());
+
+        }else {
+            textView.setText(mainActivity.passAnsToQ2() + "\n" + a + "  *  " + angleSin + "\n" + mainActivity.passAnsToQ4());
+        }
+
+        title.setText("邊長C : " + "\n" + " =>" + "\n" + " =>") ;
+
+        draw = mainActivity.draw;
         return view;
     }
 
-    private class MyClickListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            Button button = (Button)v;
-            if (button.getText().equals("是")) {
-                Log.v("ppking", "是");
-                mainActivity.initialPager();
-                mainActivity.mainPager.setCurrentItem(0);
-            }
-        }
-    }
 }
