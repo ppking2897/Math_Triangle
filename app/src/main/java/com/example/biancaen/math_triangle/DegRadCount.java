@@ -146,7 +146,7 @@ class DegRadCount {
         float textTotalSize = textCount * textSize;
 
         viewCenterWidth = viewWidth/2;
-        viewCenterHeight = viewHeight*4/5;
+        viewCenterHeight = viewHeight*3/5;
 
         if (angleDeg_ab == 120 ){
 

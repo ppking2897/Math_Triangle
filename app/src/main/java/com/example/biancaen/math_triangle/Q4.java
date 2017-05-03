@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,9 +21,11 @@ public class Q4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.v("ppking" , " Q4");
         View view = inflater.inflate(R.layout.finalpage , container , false);
-        MainActivity mainActivity = (MainActivity) getActivity();
+        final MainActivity mainActivity = (MainActivity) getActivity();
         TextView title = (TextView)view.findViewById(R.id.finalTitle);
         TextView textView =(TextView) view.findViewById(R.id.finalText);
+        Button button = (Button)view.findViewById(R.id.again);
+
 
         float angleAB =(float) mainActivity.angleAB_ANS();
 
@@ -48,7 +51,16 @@ public class Q4 extends Fragment {
 
         title.setText("邊長C : " + "\n" + " =>" + "\n" + " =>") ;
 
-        draw = mainActivity.draw;
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.initialPager();
+                mainActivity.drawData();
+                mainActivity.mainPager.setCurrentItem(0);
+                mainActivity.mainPager.getAdapter().notifyDataSetChanged();
+            }
+        });
+
         return view;
     }
 
