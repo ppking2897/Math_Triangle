@@ -91,7 +91,7 @@ class InitialData {
         angle150.add(2.598);
     }
 
-    public void setLines(ArrayList<Double> lines) {
+    void setLines(ArrayList<Double> lines) {
         this.lines = lines;
         lines.add(1.0);
         lines.add(2.0);
