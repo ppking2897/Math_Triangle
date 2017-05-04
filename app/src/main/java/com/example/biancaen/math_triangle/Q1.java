@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 public class Q1 extends Fragment {
     private MainActivity mainActivity;
     private String answer;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,6 @@ public class Q1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        Log.v("ppking" , " Q1");
         View view = inflater.inflate(R.layout.q1 , container, false);
 
         mainActivity = (MainActivity)getActivity();
@@ -78,10 +77,13 @@ public class Q1 extends Fragment {
             if (button.getText().toString().contains(answer)){
                 mainActivity.passAns1ToMain(answer);
                 mainActivity.mainPager.setCurrentItem(1);
-                mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else{
-                Toast.makeText(getContext(),"答案似乎是錯的",Toast.LENGTH_SHORT).show();
+                boolean ansRightorWrong = false;
+                mainActivity.passAnsRightToMain(ansRightorWrong);
+                mainActivity.passAns1ToMain(answer);
+                mainActivity.mainPager.setCurrentItem(3);
             }
+            mainActivity.mainPager.getAdapter().notifyDataSetChanged();
         }
     }
 }

@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String ans1;
     private float ans2;
-    private String ans3;
     private float denominator;
+    private boolean ansRightorWrong = true;
+
 
     private float viewWidth;
     private float viewHeight;
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     public double angleAB_ANS(){
         return angleAB;
     }
+
     public void passAns1ToMain(String ans1){
         this.ans1 = ans1;
     }
@@ -108,9 +110,11 @@ public class MainActivity extends AppCompatActivity {
         this.ans2 = ans2;
         this.denominator = denominator;
     }
-    public void passAns3ToMain0(String ans3){
-        this.ans3 = ans3;
+
+    public void passAnsRightToMain(boolean ansRightorWrong){
+        this.ansRightorWrong = ansRightorWrong;
     }
+
     public String passAnsToQ2(){
         return ans1;
     }
@@ -120,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(denominator);
         return arrayList;
     }
-    public String passAnsToQ4(){
-        return ans3;
+    public boolean passAnsRightToQ4(){
+        return ansRightorWrong;
     }
 
     public void drawData(){

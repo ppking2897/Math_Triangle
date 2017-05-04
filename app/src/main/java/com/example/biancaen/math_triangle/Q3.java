@@ -3,6 +3,7 @@ package com.example.biancaen.math_triangle;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,9 @@ public class Q3 extends Fragment {
         lastAns = a / b + angleSin2 + "";
         lastAns1 = (a / b)  + "";
 
+
+
+
         int number = (int) (Math.random() * question.size());
         buttonA.setText("A. "+question.get(number));
         question.remove(number);
@@ -87,6 +91,8 @@ public class Q3 extends Fragment {
         buttonC.setOnClickListener(new MyClickListener());
         buttonD.setOnClickListener(new MyClickListener());
 
+
+
         return view;
     }
     private class MyClickListener implements View.OnClickListener{
@@ -95,21 +101,16 @@ public class Q3 extends Fragment {
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().toString().contains(lastAns)){
-                mainActivity.passAns3ToMain0(lastAns);
-
-                mainActivity.drawData();
-
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else if (button.getText().toString().contains(lastAns1)){
-                mainActivity.passAns3ToMain0(lastAns1);
-
-                mainActivity.drawData();
-
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else {
-                Toast.makeText(getContext(),"答案似乎是錯的",Toast.LENGTH_SHORT).show();
+                boolean ansRightorWrong = false;
+                mainActivity.passAnsRightToMain(ansRightorWrong);
+                mainActivity.mainPager.setCurrentItem(3);
+                mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }
         }
     }
