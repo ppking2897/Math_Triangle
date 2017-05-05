@@ -73,6 +73,8 @@ public class Q1 extends Fragment {
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().toString().contains(answer)){
+                boolean ansRightorWrong = true;
+                mainActivity.passAnsRightToMain(ansRightorWrong);
                 mainActivity.passAns1ToMain(answer);
                 mainActivity.mainPager.setCurrentItem(1);
             }else{

@@ -92,6 +92,8 @@ public class Q2 extends Fragment{
         public void onClick(View v) {
             Button button = (Button)v;
             if (button.getText().toString().contains(angleSin)){
+                boolean ansRightorWrong = true;
+                mainActivity.passAnsRightToMain(ansRightorWrong);
                 mainActivity.mainPager.setCurrentItem(mainActivity.mainPager.getCurrentItem()+1);
                 mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             }else{
