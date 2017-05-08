@@ -3,9 +3,10 @@
 
     <string name="produce">產生題目</string>
 
-    <string name="question">Q : 請問邊長C為多少?</string>
+    <string name="question">Q : 請問圖中三角形面積為多少?</string>
     <string name="a">A.</string>
     <string name="b">B.</string>
     <string name="c">C.</string>
     <string name="d">D.</string>
+
 </resources>

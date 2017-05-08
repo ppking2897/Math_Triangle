@@ -138,15 +138,15 @@ public class Draw extends View {
         paintText.setStyle(Paint.Style.STROKE);
         paintText.setStrokeWidth(8);
 
-        rectF.set(b_Point_Start_X-(100) , b_Point_Start_Y -(100) , b_Point_Start_X+(100) ,b_Point_Start_Y+(100));
+        rectF.set(b_Point_Start_X - (80) , b_Point_Start_Y - (80) , b_Point_Start_X + (80) ,b_Point_Start_Y + (80));
         canvas.drawArc(rectF , 0 , -(float)angleDeg_ab  ,false ,paintText);
 
         //邊長 角度 字體顯示
-        canvas.drawText((int)b + "公分", b_TextCenterX, b_TextCenterY, paint);
-        canvas.drawText((int)a + "公分", a_TextCenterX, a_TextCenterY, paint);
+        canvas.drawText((int)b + "", b_TextCenterX, b_TextCenterY, paint);
+        canvas.drawText((int)a + "", a_TextCenterX, a_TextCenterY, paint);
 
-        canvas.drawText("邊長C", c_TextCenterX, c_TextCenterY, paint);
-        canvas.drawText((int)angleDeg_ab + "度", b_Point_Start_X - 3*textSize/2 , b_Point_Start_Y + 3*textSize/2 , paint);
+        //canvas.drawText("邊長C", c_TextCenterX, c_TextCenterY, paint);
+        canvas.drawText((int)angleDeg_ab + String.valueOf(((char)176)), b_Point_Start_X - 3*textSize/2 , b_Point_Start_Y + 3*textSize/2 , paint);
 
     }
 }

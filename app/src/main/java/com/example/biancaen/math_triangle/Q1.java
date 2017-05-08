@@ -3,12 +3,14 @@ package com.example.biancaen.math_triangle;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import java.util.ArrayList;
+
 
 public class Q1 extends Fragment {
     private MainActivity mainActivity;
@@ -31,13 +33,15 @@ public class Q1 extends Fragment {
         int lineB = (int)mainActivity.lineB_ANS();
         int angleAB =(int)mainActivity.angleAB_ANS();
 
-        answer = "1/2 * " + lineA + " * " + lineB + " * Sin" + angleAB + String.valueOf(((char)176));
+
+
+        answer = "(1/2) x " + lineA + " x " + lineB + " x Sin" + angleAB + String.valueOf(((char)176));
 
         ArrayList<String> question = new ArrayList<>();
-        question.add("1/2 * " + lineA + " * " + lineB + " * Cos" + angleAB + String.valueOf(((char)176)));
-        question.add("1/2 * " + lineA + " * " + lineB + " * Sin" + angleAB + String.valueOf(((char)176)));
-        question.add(lineA + " * " + lineB + " * Cos" + angleAB + String.valueOf(((char)176)));
-        question.add(lineA + " * " + lineB + " * Sin" + angleAB + String.valueOf(((char)176)));
+        question.add("(1/2) x " + lineA + " x " + lineB + " x Cos" + angleAB + String.valueOf(((char)176)));
+        question.add("(1/2) x " + lineA + " x " + lineB + " x Sin" + angleAB + String.valueOf(((char)176)));
+        question.add(lineA + " x " + lineB + " x Cos" + angleAB + String.valueOf(((char)176)));
+        question.add(lineA + " x " + lineB + " x Sin" + angleAB + String.valueOf(((char)176)));
 
         Button buttonA = (Button) view.findViewById(R.id.a_Q1);
         Button buttonB = (Button) view.findViewById(R.id.b_Q1);

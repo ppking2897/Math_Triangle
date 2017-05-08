@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     DegRadCount degRadCount;
     Draw draw;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         initialPager();
     }
 
+
     public void initialPager() {
 
         randomA = (int)(Math.random()*10);
@@ -76,20 +78,20 @@ public class MainActivity extends AppCompatActivity {
         lineC = (Double) arrayList.get(5);
     }
 
-    @Override
-    public void finish() {
-        degRadCount = null;
-        super.finish();
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        Log.v("ppking" , "onWindowFocusChanged !!");
+
+        Log.v("ppking" , "onWindowFocusChanged !!" + hasFocus);
         draw = (Draw)findViewById(R.id.drawView);
-        viewHeight = draw.getHeight();
-        viewWidth = draw.getWidth();
-        drawData();
+        if (hasFocus) {
+            viewHeight = draw.getHeight();
+            viewWidth = draw.getWidth();
+            drawData();
+        }else{
+            finish();
+        }
     }
 
     public double lineA_ANS(){

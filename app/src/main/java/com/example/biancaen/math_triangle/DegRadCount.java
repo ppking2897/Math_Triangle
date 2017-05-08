@@ -207,7 +207,7 @@ class DegRadCount {
             a_TextCenterY = b_Point_Start_Y - 60;
         }else{
 
-            a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize - 3 * textSize / 2;
+            a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize;
             a_TextCenterY = b_Point_Start_Y + ((float) ab_yPoint() / 2);
         }
 
