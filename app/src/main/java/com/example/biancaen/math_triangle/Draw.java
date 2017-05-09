@@ -77,7 +77,8 @@ public class Draw extends View {
         Draw.bc_Point_End_X = bc_Point_End_X;
         Draw.bc_Point_End_Y = bc_Point_End_Y;
 
-        Log.v("ppking" , "b_Point_Start_X00 : " + b_Point_Start_X);
+        Log.v("ppking" , "b_Point_End_X00 : " + b_Point_End_X);
+        Log.v("ppking" , "a_Point_End_Y00 : " + a_Point_End_Y);
     }
 
     public void setTextCenter(float b_TextCenterX , float b_TextCenterY,
@@ -123,7 +124,8 @@ public class Draw extends View {
         paint.setStrokeWidth(8);
         paint.setTextSize(textSize);
 
-        Log.v("ppking" , "b_Point_Start_X : " + b_Point_Start_X);
+        Log.v("ppking" , "b_Point_End_X : " + b_Point_End_X);
+        Log.v("ppking" , "a_Point_End_Y : " + a_Point_End_Y);
         //底部線 b
         canvas.drawLine(b_Point_Start_X , b_Point_Start_Y , b_Point_End_X , b_Point_End_Y  , paint);
 
@@ -131,15 +133,16 @@ public class Draw extends View {
         canvas.drawLine(a_Point_Start_X , a_Point_Start_Y , a_Point_End_X , a_Point_End_Y ,paint);
 
         //右邊線 c
-        canvas.drawLine(ac_Point_Start_X , ac_Point_Start_Y, ac_Point_End_X ,ac_Point_End_Y ,paint);
-        canvas.drawLine(bc_Point_Start_X , bc_Point_Start_Y, bc_Point_End_X ,bc_Point_End_Y ,paint);
+        canvas.drawLine(ac_Point_Start_X , ac_Point_Start_Y, b_Point_End_X ,b_Point_End_Y ,paint);
+        //canvas.drawLine(ac_Point_Start_X , ac_Point_Start_Y, ac_Point_End_X ,ac_Point_End_Y ,paint);
+        //canvas.drawLine(bc_Point_Start_X , bc_Point_Start_Y, bc_Point_End_X ,bc_Point_End_Y ,paint);
 
         //角度扇形顯示
         paintText.setStyle(Paint.Style.STROKE);
         paintText.setStrokeWidth(8);
 
-        rectF.set(b_Point_Start_X - (80) , b_Point_Start_Y - (80) , b_Point_Start_X + (80) ,b_Point_Start_Y + (80));
-        canvas.drawArc(rectF , 0 , -(float)angleDeg_ab  ,false ,paintText);
+        //rectF.set(b_Point_Start_X - (80) , b_Point_Start_Y - (80) , b_Point_Start_X + (80) ,b_Point_Start_Y + (80));
+        //canvas.drawArc(rectF , 0 , -(float)angleDeg_ab  ,false ,paintText);
 
         //邊長 角度 字體顯示
         canvas.drawText((int)b + "", b_TextCenterX, b_TextCenterY, paint);

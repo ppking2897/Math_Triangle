@@ -51,14 +51,14 @@ public class Q2 extends Fragment{
         if (i%2==0 || i%2==1){
             int p =(int)i;
             question.add( p + "");
-            question.add( p + " X 1/2 ");
-            question.add( p + " X √2/2 ");
-            question.add( p + " X √3/2 ");
+            question.add( p + " x 1/2 ");
+            question.add( p + " x √2/2 ");
+            question.add( p + " x √3/2 ");
         }else {
             question.add( i + "");
-            question.add( i + " X 1/2 ");
-            question.add( i + " X √2/2 ");
-            question.add( i + " X √3/2 ");
+            question.add( i + " x 1/2 ");
+            question.add( i + " x √2/2 ");
+            question.add( i + " x √3/2 ");
         }
 
 

@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void initialPager() {
 
-        randomA = (int)(Math.random()*10);
-        randomB = (int)(Math.random()*10);
+        randomA = (int)(Math.random()*10)+1;
+        randomB = (int)(Math.random()*10)+1;
         randomAngles = ((int) (Math.random() * 6));
 
         ArrayList arrayList = angles.get(randomAngles);
@@ -95,11 +95,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public double lineA_ANS(){
-        lines.get(randomA);
-        return lines.get(randomA);
+        return randomA;
     }
     public double lineB_ANS(){
-        return lines.get(randomB);
+        return randomB;
     }
     public double angleAB_ANS(){
         return angleAB;
@@ -131,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void drawData(){
-        degRadCount = new DegRadCount(this, 300, viewWidth, viewHeight, lineA, lineB, lineC, angleAB, angleAC, angleBC);
-        draw.setLine(lines.get(randomA) , lines.get(randomB) , 1);
+        degRadCount = new DegRadCount(this, 500, viewWidth, viewHeight, randomA, randomB, angleAB);
+        draw.setLine(randomA , randomB , 1);
     }
 
     private class MyFragmentPagerAdapter extends FragmentPagerAdapter {

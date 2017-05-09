@@ -45,44 +45,53 @@ class DegRadCount {
 
 
     DegRadCount(MainActivity mainActivity , int proportion , float viewWidth , float viewHeight,
-                double a , double b , double c , double angleDeg_ab , double angleDeg_ac , double angleDeg_bc){
+                double a , double b , double angleDeg_ab){
 
+        Log.v("ppking" , "viewWidth : " +viewWidth);
         this.angleDeg_ab = angleDeg_ab;
-        this.angleDeg_ac = angleDeg_ac;
-        this.angleDeg_bc = angleDeg_bc;
+        //this.angleDeg_ac = angleDeg_ac;
+        //this.angleDeg_bc = angleDeg_bc;
 
         big_a = a *proportion;
         big_b = b *proportion;
-        big_c = c *proportion;
+        //big_c = c *proportion;
 
         initial(viewWidth , viewHeight , angleDeg_ab);
 
-        if (angleDeg_ab == 60.0 ){
-            proportion = proportion -100;
+        for (int i = proportion ; a_Point_End_X < viewWidth/10 ;i--){
+            Log.v("ppking" , " a_Point_End_X < viewWidth/5 : " +b_Point_End_X);
+            proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;
-            big_c = c *proportion;
-            initial(viewWidth , viewHeight , angleDeg_ab);
-        }else if (angleDeg_ab == 150.0){
-            proportion = proportion - 50;
-            big_a = a *proportion;
-            big_b = b *proportion;
-            big_c = c *proportion;
+            //big_c = c *proportion;
             initial(viewWidth , viewHeight , angleDeg_ab);
         }
-        Log.v("ppking" , " a_Point_End_X : " + a_Point_End_X);
-        if (a_Point_End_X < 0){
-            proportion = proportion - 50;
+
+        for (int i = proportion ; a_Point_End_Y < 0 ;i--){
+            Log.v("ppking" , " a_Point_End_Y : " +b_Point_End_X);
+            proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;
-            big_c = c *proportion;
+            //big_c = c *proportion;
             initial(viewWidth , viewHeight , angleDeg_ab);
         }
-        if (a_Point_End_Y < 0){
-            proportion = proportion - 50;
+
+        for (int i = proportion ; b_Point_Start_X < viewWidth/4 ;i--){
+            Log.v("ppking" , " b_Point_Start_X: " +b_Point_End_X);
+            proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;
-            big_c = c *proportion;
+            //big_c = c *proportion;
+            initial(viewWidth , viewHeight , angleDeg_ab);
+        }
+
+        Log.v("ppking" , "b_Point_End_X : " +b_Point_End_X );
+        for (int i = proportion ; b_Point_End_X > 5*viewWidth/6;i--){
+            Log.v("ppking" , "b_Point_End_X > 5*viewWidth/6 : " +b_Point_End_X);
+            proportion = i;
+            big_a = a *proportion;
+            big_b = b *proportion;
+            //big_c = c *proportion;
             initial(viewWidth , viewHeight , angleDeg_ab);
         }
 
@@ -117,16 +126,6 @@ class DegRadCount {
         return -Math.sin(angleRad) * big_a;
     }
 
-    private double ac_xPoint() {
-        double angleRad = ((180-(angleDeg_ab+angleDeg_ac)) / 180) * Math.PI;
-        return Math.cos(angleRad) * big_c;
-    }
-
-    private double ac_yPoint() {
-        double angleRad = ((180-(angleDeg_ab+angleDeg_ac)) / 180) * Math.PI;
-        return Math.sin(angleRad) * big_c;
-    }
-
     private double bc_xPoint() {
         double angleRad = (angleDeg_bc / 180) * Math.PI;
         return -Math.cos(angleRad) * big_c;
@@ -155,13 +154,12 @@ class DegRadCount {
 
             b_Point_Start_X = viewCenterWidth-100;
         }else if (angleDeg_ab == 150){
-
             b_Point_Start_X = viewCenterWidth ;
         }
         else {
-
             b_Point_Start_X = viewCenterWidth - ((float) big_b / 2);
         }
+        //b_Point_Start_X = viewCenterWidth - ((float) big_b / 2);
         b_Point_Start_Y = viewCenterHeight;
 
         b_Point_End_X = b_Point_Start_X + (float) big_b;
@@ -178,8 +176,11 @@ class DegRadCount {
         ac_Point_Start_X = a_Point_End_X;
         ac_Point_Start_Y = a_Point_End_Y;
 
-        ac_Point_End_X = a_Point_End_X + (float) ac_xPoint();
-        ac_Point_End_Y = a_Point_End_Y + (float) ac_yPoint();
+        //ac_Point_End_X = a_Point_End_X + (float) ac_xPoint();
+        //ac_Point_End_Y = a_Point_End_Y + (float) ac_yPoint();
+
+        ac_Point_End_X = b_Point_End_X;
+        ac_Point_End_Y = b_Point_End_Y;
 
         //-----
         bc_Point_Start_X = b_Point_End_X;
@@ -197,21 +198,24 @@ class DegRadCount {
             b_TextCenterX = viewCenterWidth+textTotalSize*2;
         }else {
 
-            b_TextCenterX = viewCenterWidth - (textTotalSize / 2);
+            b_TextCenterX = viewCenterWidth;
         }
+        //b_TextCenterX = viewCenterWidth;
         b_TextCenterY = b_Point_Start_Y + textSize * 2;
 
-        if (angleDeg_ab == 120 || angleDeg_ab == 135 || angleDeg_ab == 150) {
+//        if (angleDeg_ab == 120 || angleDeg_ab == 135 || angleDeg_ab == 150) {
+//
+//            a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize ;
+//            a_TextCenterY = b_Point_Start_Y - 60;
+//        }else{
+//
+//            a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize;
+//            a_TextCenterY = b_Point_Start_Y + ((float) ab_yPoint() / 2);
+//        }
 
-            a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize ;
-            a_TextCenterY = b_Point_Start_Y - 60;
-        }else{
-
-            a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize;
-            a_TextCenterY = b_Point_Start_Y + ((float) ab_yPoint() / 2);
-        }
-
-        c_TextCenterX = a_Point_End_X + ((float) ac_xPoint() / 2) + textSize;
-        c_TextCenterY = a_Point_End_Y + ((float) ac_yPoint() / 2);
+        a_TextCenterX = b_Point_Start_X + ((float) ab_xPoint() / 2) - textTotalSize;
+        a_TextCenterY = b_Point_Start_Y + ((float) ab_yPoint() / 2);
+        //c_TextCenterX = a_Point_End_X + ((float) ac_xPoint() / 2) + textSize;
+        //c_TextCenterY = a_Point_End_Y + ((float) ac_yPoint() / 2);
     }
 }
