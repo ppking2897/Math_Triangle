@@ -43,6 +43,7 @@ class DegRadCount {
     private double big_c;
 
 
+    
 
     DegRadCount(MainActivity mainActivity , int proportion , float viewWidth , float viewHeight,
                 double a , double b , double angleDeg_ab){
