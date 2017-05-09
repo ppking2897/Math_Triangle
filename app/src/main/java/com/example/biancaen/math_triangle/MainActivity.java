@@ -15,21 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Double> lines = new ArrayList<>();
     private ArrayList<ArrayList<Double>> angles = new ArrayList<>();
     private double angleAB;
-    private double angleAC;
-    private double angleBC;
 
     private int randomA;
     private int randomB;
-    private int randomAngles;
-    private double lineA;
-    private double lineB;
-    private double lineC;
 
     private String ans1;
     private float ans2;
     private float denominator;
     private boolean ansRightorWrong = true;
-
 
     private float viewWidth;
     private float viewHeight;
@@ -43,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainPager = (MyViewPager) findViewById(R.id.mainPager);
-
+        draw = (Draw)findViewById(R.id.drawView);
+        Log.v("ppking" , " oncreate !!");
         InitialData initialData = new InitialData();
         initialData.setAngles(angles);
         initialData.setLines(lines);
@@ -63,36 +57,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void initialPager() {
 
-        randomA = (int)(Math.random()*10)+1;
-        randomB = (int)(Math.random()*10)+1;
-        randomAngles = ((int) (Math.random() * 6));
+        randomA = (int)(Math.random()*8)+3;
+        randomB = (int)(Math.random()*8)+3;
+        int randomAngles = ((int) (Math.random() * 6));
 
         ArrayList arrayList = angles.get(randomAngles);
 
         angleAB =(Double) arrayList.get(0);
-        angleAC =(Double) arrayList.get(1);
-        angleBC =(Double) arrayList.get(2);
-
-        lineA = (Double) arrayList.get(3);
-        lineB = (Double) arrayList.get(4);
-        lineC = (Double) arrayList.get(5);
     }
 
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-
+        int i = mainPager.getCurrentItem();
         Log.v("ppking" , "onWindowFocusChanged !!" + hasFocus);
-        draw = (Draw)findViewById(R.id.drawView);
-        if (hasFocus) {
+        if (hasFocus && i == 0) {
+            draw = (Draw)findViewById(R.id.drawView);
             viewHeight = draw.getHeight();
             viewWidth = draw.getWidth();
             drawData();
-        }else{
-            finish();
         }
     }
+
 
     public double lineA_ANS(){
         return randomA;
@@ -169,5 +156,4 @@ public class MainActivity extends AppCompatActivity {
             return super.getItemPosition(object);
         }
     }
-
 }

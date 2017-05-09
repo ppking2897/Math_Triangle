@@ -1,5 +1,6 @@
 package com.example.biancaen.math_triangle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,9 @@ public class Q4 extends Fragment {
         TextView superLink01 = (TextView)view.findViewById(R.id.superLink01);
         TextView superLink02 = (TextView)view.findViewById(R.id.superLink02);
 
+        Button nextQuestion = (Button)view.findViewById(R.id.nextQuestion);
+
+        nextQuestion.setOnClickListener(new MyClickListener());
 
         boolean ansRightorWrong = mainActivity.passAnsRightToQ4();
         if (ansRightorWrong){
@@ -38,6 +42,7 @@ public class Q4 extends Fragment {
             show.setText("");
             superLink01.setText("");
             superLink02.setText("");
+            nextQuestion.setVisibility(View.INVISIBLE);
         }else {
             textViewUp.setText("選擇的答案是錯誤的!!");
 
@@ -47,6 +52,8 @@ public class Q4 extends Fragment {
 
             superLink02.setText(Html.fromHtml("<a href=\"https://www.youtube.com/watch?v=_syV6cDk7Lg&list=\">Area Of A Non-Right Angle Triangle</a>"));
             superLink02.setMovementMethod(LinkMovementMethod.getInstance());
+
+            nextQuestion.setVisibility(View.VISIBLE);
         }
         float angleAB =(float) mainActivity.angleAB_ANS();
         float lineA = (float)mainActivity.lineA_ANS();
@@ -55,13 +62,13 @@ public class Q4 extends Fragment {
         float finalAns = (lineA * lineB) /4;
 
         if (angleAB == 30 || angleAB == 150){
-            angleSin = "1/2";
+            angleSin = "(1/2)";
             angleSin1 = "";
         }else if (angleAB == 45 || angleAB == 135){
-            angleSin = "√2/2";
+            angleSin = "(√2/2)";
             angleSin1 = "√2";
         }else if (angleAB == 60 || angleAB == 120){
-            angleSin = "√3/2";
+            angleSin = "(√3/2)";
             angleSin1 = "√3";
         }
 
@@ -72,16 +79,31 @@ public class Q4 extends Fragment {
         if (a%2==0){
             int p =(int)a;
             int x =(int)finalAns;
-            textView.setText(mainActivity.passAnsToQ2() + "\n" + p + "  X  " + angleSin + "\n" + x + angleSin1);
+            textView.setText(mainActivity.passAnsToQ2() + "\n" + p + "  x  " + angleSin + "\n" + x + angleSin1);
 
         }else {
-            textView.setText(mainActivity.passAnsToQ2() + "\n" + a + "  X  " + angleSin + "\n" + finalAns + angleSin1);
+            textView.setText(mainActivity.passAnsToQ2() + "\n" + a + "  x  " + angleSin + "\n" + finalAns + angleSin1);
         }
 
         title.setText("面積為 : " + "\n" + " =>" + "\n" + " =>") ;
 
 
         return view;
+    }
+
+    private class MyClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            MainActivity mainActivity = (MainActivity)getActivity();
+//            mainActivity.initialPager();
+//            mainActivity.mainPager.setCurrentItem(0);
+//            mainActivity.mainPager.getAdapter().notifyDataSetChanged();
+            mainActivity.finish();
+            Intent intent = new Intent(getContext() , MainActivity.class);
+            getContext().startActivity(intent);
+
+        }
     }
 
 }

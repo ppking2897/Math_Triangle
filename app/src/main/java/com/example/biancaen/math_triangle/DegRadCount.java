@@ -47,7 +47,6 @@ class DegRadCount {
     DegRadCount(MainActivity mainActivity , int proportion , float viewWidth , float viewHeight,
                 double a , double b , double angleDeg_ab){
 
-        Log.v("ppking" , "viewWidth : " +viewWidth);
         this.angleDeg_ab = angleDeg_ab;
         //this.angleDeg_ac = angleDeg_ac;
         //this.angleDeg_bc = angleDeg_bc;
@@ -58,17 +57,24 @@ class DegRadCount {
 
         initial(viewWidth , viewHeight , angleDeg_ab);
 
+        //上面頂點是否碰到左邊邊界
         for (int i = proportion ; a_Point_End_X < viewWidth/10 ;i--){
-            Log.v("ppking" , " a_Point_End_X < viewWidth/5 : " +b_Point_End_X);
             proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;
             //big_c = c *proportion;
             initial(viewWidth , viewHeight , angleDeg_ab);
         }
-
+        //上面頂點是否碰到右邊邊界
+        for (int i = proportion ; a_Point_End_X > 9*viewWidth/10 ;i--){
+            proportion = i;
+            big_a = a *proportion;
+            big_b = b *proportion;
+            //big_c = c *proportion;
+            initial(viewWidth , viewHeight , angleDeg_ab);
+        }
+        //上方邊界
         for (int i = proportion ; a_Point_End_Y < 0 ;i--){
-            Log.v("ppking" , " a_Point_End_Y : " +b_Point_End_X);
             proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;
@@ -76,18 +82,17 @@ class DegRadCount {
             initial(viewWidth , viewHeight , angleDeg_ab);
         }
 
-        for (int i = proportion ; b_Point_Start_X < viewWidth/4 ;i--){
-            Log.v("ppking" , " b_Point_Start_X: " +b_Point_End_X);
+        //右邊頂點是否碰到右邊邊界
+        for (int i = proportion ; b_Point_Start_X < viewWidth/6 ;i--){
             proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;
             //big_c = c *proportion;
             initial(viewWidth , viewHeight , angleDeg_ab);
         }
-
-        Log.v("ppking" , "b_Point_End_X : " +b_Point_End_X );
-        for (int i = proportion ; b_Point_End_X > 5*viewWidth/6;i--){
-            Log.v("ppking" , "b_Point_End_X > 5*viewWidth/6 : " +b_Point_End_X);
+        //右邊頂點是否碰到左邊邊界
+        for (int i = proportion ; b_Point_End_X > 9*viewWidth/10;i--){
+            Log.v("ppking" , " b_Point_End_X > 5*viewWidth/6 : " + proportion );
             proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;

@@ -27,13 +27,13 @@ public class Q3 extends Fragment {
         float angleAB =(float) mainActivity.angleAB_ANS();
 
         if (angleAB == 30 || angleAB == 150){
-            angleSin = "1/2";
+            angleSin = "(1/2)";
         }else if (angleAB == 45 || angleAB == 135){
-            angleSin = "√2/2";
+            angleSin = "(√2/2)";
             angleSin2 = "√2";
 
         }else if (angleAB == 60 || angleAB == 120){
-            angleSin = "√3/2";
+            angleSin = "(√3/2)";
             angleSin2 = "√3";
         }
 
@@ -47,7 +47,7 @@ public class Q3 extends Fragment {
         float a = (float)arrayList.get(0);
         float b = (float)arrayList.get(1);
 
-        textView.setText( "請問 " + a + "  *  " + angleSin + " = ?");
+        textView.setText( "請問 " + a + "  x  " + angleSin + " = ?");
 
 
         ArrayList<String> question = new ArrayList<>();
@@ -89,8 +89,6 @@ public class Q3 extends Fragment {
         buttonB.setOnClickListener(new MyClickListener());
         buttonC.setOnClickListener(new MyClickListener());
         buttonD.setOnClickListener(new MyClickListener());
-
-
 
         return view;
     }
