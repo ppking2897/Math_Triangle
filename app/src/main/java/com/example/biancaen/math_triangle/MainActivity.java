@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mainPager = (MyViewPager) findViewById(R.id.mainPager);
         draw = (Draw)findViewById(R.id.drawView);
-        Log.v("ppking" , " oncreate !!");
         InitialData initialData = new InitialData();
         initialData.setAngles(angles);
         initialData.setLines(lines);
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         int i = mainPager.getCurrentItem();
-        Log.v("ppking" , "onWindowFocusChanged !!" + hasFocus);
         if (hasFocus && i == 0) {
             draw = (Draw)findViewById(R.id.drawView);
             viewHeight = draw.getHeight();
@@ -130,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Log.v("ppking" , "position : " + position);
             this.position = position;
             return views.get(position);
         }

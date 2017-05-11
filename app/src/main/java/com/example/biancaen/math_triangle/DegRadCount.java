@@ -43,7 +43,7 @@ class DegRadCount {
     private double big_c;
 
 
-    
+
 
     DegRadCount(MainActivity mainActivity , int proportion , float viewWidth , float viewHeight,
                 double a , double b , double angleDeg_ab){
@@ -93,7 +93,6 @@ class DegRadCount {
         }
         //右邊頂點是否碰到左邊邊界
         for (int i = proportion ; b_Point_End_X > 9*viewWidth/10;i--){
-            Log.v("ppking" , " b_Point_End_X > 5*viewWidth/6 : " + proportion );
             proportion = i;
             big_a = a *proportion;
             big_b = b *proportion;

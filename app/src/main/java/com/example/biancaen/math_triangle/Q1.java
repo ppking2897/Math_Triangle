@@ -25,7 +25,6 @@ public class Q1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.q1 , container, false);
 
-
         mainActivity = (MainActivity)getActivity();
 
         int lineA = (int)mainActivity.lineA_ANS();

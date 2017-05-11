@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class Q4 extends Fragment {
     private String angleSin;
     private String angleSin1;
+    private static int rightCount;
 
     @Nullable
     @Override
@@ -37,15 +39,24 @@ public class Q4 extends Fragment {
         nextQuestion.setOnClickListener(new MyClickListener());
 
         boolean ansRightorWrong = mainActivity.passAnsRightToQ4();
+
         if (ansRightorWrong){
-            textViewUp.setText("恭喜!!正確答案!!");
+            textViewUp.setText("恭喜答對!!");
             show.setText("");
             superLink01.setText("");
             superLink02.setText("");
-            nextQuestion.setVisibility(View.INVISIBLE);
+            rightCount = rightCount+1;
+            if (rightCount == 6 ){
+                textViewUp.setText("恭喜又答對了!!");
+            }else if (rightCount == 9){
+                textViewUp.setText("恭喜過關!!");
+                nextQuestion.setVisibility(View.INVISIBLE);
+            }
+            Log.v("ppking" , " rightCount : " +rightCount);
+            //nextQuestion.setVisibility(View.INVISIBLE);
         }else {
             textViewUp.setText("選擇的答案是錯誤的!!");
-
+            rightCount = 0;
             show.setText("可以參考下列網址:");
             superLink01.setText(Html.fromHtml("<a href=\"https://www.youtube.com/watch?v=cUvc6XyT8z8&feature=youtu.be\">利用Sin計算三角形面積</a>"));
             superLink01.setMovementMethod(LinkMovementMethod.getInstance());
@@ -53,7 +64,7 @@ public class Q4 extends Fragment {
             superLink02.setText(Html.fromHtml("<a href=\"https://www.youtube.com/watch?v=_syV6cDk7Lg&list=\">Area Of A Non-Right Angle Triangle</a>"));
             superLink02.setMovementMethod(LinkMovementMethod.getInstance());
 
-            nextQuestion.setVisibility(View.VISIBLE);
+            //nextQuestion.setVisibility(View.VISIBLE);
         }
         float angleAB =(float) mainActivity.angleAB_ANS();
         float lineA = (float)mainActivity.lineA_ANS();
@@ -96,9 +107,6 @@ public class Q4 extends Fragment {
         @Override
         public void onClick(View v) {
             MainActivity mainActivity = (MainActivity)getActivity();
-//            mainActivity.initialPager();
-//            mainActivity.mainPager.setCurrentItem(0);
-//            mainActivity.mainPager.getAdapter().notifyDataSetChanged();
             mainActivity.finish();
             Intent intent = new Intent(getContext() , MainActivity.class);
             getContext().startActivity(intent);
